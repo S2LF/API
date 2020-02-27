@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Happy?API!</title>
+</head>
+<body>
+    
+
+
+<div id="content">
+
+</div>
+
+
+ 
+
+
+<!-- https://github.com/Asabeneh/30DaysOfJavaScript -->
+<!-- https://hackersandslackers.com/making-ajax-calls-with-jquery/ -->
+<!-- https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/ -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <script>
+    
+
+    $(document).ready(function(){
+
+
+            let api_url = 'https://api.themoviedb.org/3/'
+            let key = '6a0bc0546f0c4bea10345001c61a431f' 
+
+            
+            $.post(api_url+"collection/10?api_key="+key+"&language=fr-FR",
+            function(result){
+                let div = $("<h1>"+result["name"]+"</h1>")
+                
+                    div.append("<p>"+result["overview"]+"</p>")
+
+                $("#content").html(div)
+                }).fail(function (xhr, status, error) {
+                    $("#content").html("Result: " + status + " " + error + " " + 
+                    xhr.status + " " + xhr.statusText);
+                });
+    })
+    
+
+    </script>
+
+
+
+
+</body>
+</html>
+
