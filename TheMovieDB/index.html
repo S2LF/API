@@ -36,18 +36,25 @@
             let key = '6a0bc0546f0c4bea10345001c61a431f' 
 
             
-            $.post(api_url+"collection/10?api_key="+key+"&language=fr-FR",
+            $.get(
+                api_url+"collection/10",
+                {
+                    "api_key" : key,
+                    "language" : "fr-FR"
+                },
             function(result){
-                let div = $("<h1>"+result["name"]+"</h1>")
+                let div = $("<h1>"+result.name+"</h1>")
                 
-                    div.append("<p>"+result["overview"]+"</p>")
+                    div.append("<p>"+result.overview+"</p>")
 
                 
                 $("#content").html(div)
-                }).fail(function (xhr, status, error) {
-                    $("#content").html("Result: " + status + " " + error + " " + 
-                    xhr.status + " " + xhr.statusText);
-                });
+                }
+            )
+            .fail(function (xhr, status, error) {
+                $("#content").html("Result: " + status + " " + error + " " + 
+                xhr.status + " " + xhr.statusText);
+            });
     })
     
 
