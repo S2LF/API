@@ -47,6 +47,14 @@
                 
                     div.append("<p>"+result.overview+"</p>")
 
+                films = result.parts
+                films.forEach((film) => {
+                    
+                    div.append("<li>"+film.title+"</li>")
+                })
+
+                
+
                 
                 $("#content").html(div)
                 }

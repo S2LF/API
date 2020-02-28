@@ -20,7 +20,7 @@ $( document ).ready(function() {
     function (result, status, xhr){
         let table = $("<table><tr><th>Weather Description</th></tr>");
 
-        table.append("<tr><td>Ville:</td><td>" + result["name"] + "</td></tr>");
+        table.append("<tr><td>Ville:</td><td>" + result.name + "</td></tr>");
         table.append("<tr><td>Pays:</td><td>" + result["sys"]["country"] + 
         "</td></tr>");
         table.append("<tr><td>Vent:</td><td>" + result["wind"]["speed"] + 
