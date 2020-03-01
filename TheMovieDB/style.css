@@ -6,6 +6,11 @@ body{
     background-color: rgba(110, 110, 110, 0.253);
     
 }
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
 
 #main-wrapper{
 	max-width: 1024px;
@@ -14,7 +19,16 @@ body{
     background-color: white;
 }
 
+header{
+    background: rgba(8, 102, 8, 0.486);
 
+    display: flex;
+    flex-direction: row;
+}
+header a {
+    padding: 1em ;
+    color :white;
+}
 #title{
     text-align: center;
 }
