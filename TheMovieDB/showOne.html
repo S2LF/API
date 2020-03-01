@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<div id="title"></div>
+
+<div id="content">
+
+</div>
+<ul id="list"></ul>
+
+ <!-- https://www.yogihosting.com/implement-tmdb-api-with-jquery-ajax/ -->
+
+
+<!-- https://github.com/Asabeneh/30DaysOfJavaScript -->
+<!-- https://hackersandslackers.com/making-ajax-calls-with-jquery/ -->
+<!-- https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/ -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+
+    let api_url = 'https://api.themoviedb.org/3/'
+    let key = '6a0bc0546f0c4bea10345001c61a431f' 
+
+    $.get(
+                    api_url+"collection/10",
+                    {
+                        "api_key" : key,
+                        "language" : "fr-FR"
+                    },
+                function(result){
+                    let title = $("<h1>"+result.name+"</h1>")
+                    let div = $("<p>"+result.overview+"</p>")
+
+                    let list = ""
+                    films = result.parts
+                    films.forEach((film) => {
+                        
+                        list+=(film.title)
+                    })
+
+                    
+
+                    $("#title").html(title)
+                    $("#content").html(div)
+                    $("#list").html(list)
+                    }
+                )
+                .fail(function (xhr, status, error) {
+                    $("#content").html("Result: " + status + " " + error + " " + 
+                    xhr.status + " " + xhr.statusText);
+                })
+
+})
+</script>
+</body>
+</html>

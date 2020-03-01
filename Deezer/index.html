@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Happy?API!</title>
+    
 </head>
 <body>
     
 
 
 <div class="contet">
-<a href="">test</a>
 
 </div>
 
@@ -26,28 +26,30 @@
 <!-- https://api.deezer.com/version/service/id/method/?parameters -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
+   <!-- <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script> -->
 
     <script>
-    
+        
+        key = 'de3327fba52ba0194a44ec23b0f366ba'
+
 
     $ (document).ready(function(){
+            let api_url= 'https://api.deezer.com/artist/27'
 
-        $('.content a').each(function(index, element){
 
-            api_url= 'https://api.deezer.com/'
-            key = 'de3327fba52ba0194a44ec23b0f366ba'
-
-            $.ajax({
-
-                url: api_url + "?api_key="+ key +"&q"+ $(this).text(),
-                contentType: "application/json",
-                success: function(result){
-                    console.log(result)
-                }
+            $.get(
+                'https://api.deezer.com/artist/27/',
+                {
+                },
+                function(result){
+                console.log(result)
             })
-        })
+            .fail(function (xhr, status, error) {
+        $("#content").html("Result: " + status + " " + error + " " + 
+        xhr.status + " " + xhr.statusText);
     })
+    })
+    
 
     </script>
 

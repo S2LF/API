@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(110, 110, 110, 0.253);
+    
+}
+
+#main-wrapper{
+	max-width: 1024px;
+	margin: auto;
+    padding: 1em 1em 1em 1em;
+    background-color: white;
+}
+
+
+#title{
+    text-align: center;
+}
+
+#content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#content div{
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.5em;
+    border: 1px solid black;
+}
+
+.img_default{
+    width: 150px;
+}
+
+#film{
+    display: initial;
+    text-align: center;
+}
