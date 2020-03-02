@@ -11,9 +11,12 @@
     
 
 
-<div class="contet">
+<div id="content">
 
 </div>
+
+
+<div id="player"></div>
 
 
 <!-- https://github.com/Asabeneh/30DaysOfJavaScript -->
@@ -37,12 +40,50 @@
             let api_url= 'https://api.deezer.com/artist/27'
 
 
+            let ya_bonID = "52639306"
+            let hiphop = "591892875"
+            let tranquilou = "57658508"
+
             $.get(
-                'https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/27/',
-                {
-                },
+                'https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/27',
+
                 function(result){
-                console.log(result)
+                    console.log(result)
+                }
+                
+              
+            )
+
+
+            $.get(
+                'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/'+ya_bonID,
+                
+                function(result){
+                    console.log(result)
+                    playlist = ""
+                    playlist += "<h1>Infos de la playlist</h1>"
+
+                    titre = "<h2>Titre : "+result.title+"</h2>"
+                    nb_tracks = "<p>Nombre de morceaux : "+result.nb_tracks+"</p>"
+                    duree = "<p>Durée : "+ (Math.round((result.duration/60)/60)) +" heures</p>"
+                    auteur = "<p>Crée par : "+result.creator.name+"</p>"
+                    date_crea = "<p>Crée le : "+result.creation_date+"</p>"
+                    picture = "<img src='"+result.picture_medium+"'></img>"
+
+
+
+                    playlist += titre
+                    playlist += picture
+                    playlist += nb_tracks
+                    playlist += duree
+                    playlist += auteur
+                    playlist += date_crea
+
+
+
+
+                    $("#content").html(playlist)
+
             })
             .fail(function (xhr, status, error) {
         $("#content").html("Result: " + status + " " + error + " " + 
@@ -53,7 +94,24 @@
 
     </script>
 
-
+    <div id="dz-root"></div>
+    <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
+    <script>
+        
+        DZ.init({
+            appId  : 'de3327fba52ba0194a44ec23b0f366ba',
+            channelUrl : 'http://YOUR_DOMAIN/channel.html',
+            player: {
+                container: 'player',
+                width : 800,
+                height : 300,
+                onload : function(){
+                    DZ.player.playPlaylist(52639306);
+                }
+            },
+        });
+        
+    </script>
 
 
 </body>
